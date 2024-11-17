@@ -39,6 +39,7 @@ let readyTimer;
 let readyClock = READY_TIME;
 
 let hiscore = parseFloat(window.localStorage.getItem('hiscore')) || 0;
+
 console.log('hiscore', hiscore);
 
 readyBtn.addEventListener('mouseover', (e) => {
@@ -112,7 +113,7 @@ function stopGame(finished) {
   console.log('stopGame', timer);
   targetWrap.style.display = 'none';
   window.clearInterval(timer);
-  if (time < hiscore && finished) {
+  if ((time < hiscore || hiscore === 0) && finished) {
     hiscore = time;
     window.localStorage.setItem('hiscore', time);
     alert('New Hiscore!\n' + hiscore);
