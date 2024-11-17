@@ -34,7 +34,7 @@ boardResetBtn.onclick = resetGame;
 // timers
 const READY_TIME = 3;
 let timer;
-let time = null;
+let elapsedTime = null;
 let readyTimer;
 let readyClock = READY_TIME;
 
@@ -43,7 +43,7 @@ let hiscore = parseFloat(window.localStorage.getItem('hiscore')) || 0;
 console.log('hiscore', hiscore);
 
 readyBtn.addEventListener('mouseover', (e) => {
-  if (time !== null) return;
+  if (elapsedTime !== null) return;
   // reset readyClock
   readyReset();
   // readyClock start
@@ -62,25 +62,29 @@ readyBtn.addEventListener('mouseout', () => {
   window.clearInterval(readyTimer);
 });
 function readyReset() {
-  console.log('readyReset', time);
-  if (time !== null) return;
+  console.log('readyReset', elapsedTime);
+  if (elapsedTime !== null) return;
   readyClock = READY_TIME;
   startCount.innerHTML = readyClock;
 }
 
 // START
 let roundCount;
+let startTime;
 
 function startGame() {
   console.log('startGame');
+  startTime = Date.now();
   roundCount = TARGET_ROUNDS;
   randomizeTarget();
   targetWrap.style.display = 'block';
-  time = 0;
-  startCount.innerHTML = time;
+  elapsedTime = 0;
+
+  startCount.innerHTML = '00.00';
   timer = window.setInterval(() => {
-    time = Math.round(time * 100 + 1) / 100;
-    startCount.innerHTML = time;
+    const now = Date.now();
+    elapsedTime = Math.floor((now - startTime) / 10) / 100;
+    startCount.innerHTML = elapsedTime.toFixed(2);
   }, 10);
 }
 
@@ -113,15 +117,15 @@ function stopGame(finished) {
   console.log('stopGame', timer);
   targetWrap.style.display = 'none';
   window.clearInterval(timer);
-  if ((time < hiscore || hiscore === 0) && finished) {
-    hiscore = time;
-    window.localStorage.setItem('hiscore', time);
+  if ((elapsedTime < hiscore || hiscore === 0) && finished) {
+    hiscore = elapsedTime;
+    window.localStorage.setItem('hiscore', elapsedTime);
     alert('New Hiscore!\n' + hiscore);
   }
 }
 function resetGame() {
   console.log('resetGame');
-  time = null;
+  elapsedTime = null;
   stopGame();
   readyReset();
 }
