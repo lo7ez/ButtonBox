@@ -87,6 +87,7 @@ body {
 }
 .readyBtn span {
   pointer-events: none;
+  font-size: 19px;
 }
 .targetWrap {
   position: absolute;
