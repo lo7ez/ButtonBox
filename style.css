@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+  background: rgb(220, 220, 220);
+  padding-top: 50px;
+}
+.title {
+  font-size: 30px;
+  padding: 10px;
+}
+.credits {
+  padding-bottom: 20px;
+}
+.helpBtn {
+  position: absolute;
+  top: 10px;
+  left: 470px;
+}
+.mainMenu {
+  position: relative;
+  pointer-events: auto;
+  opacity: 1;
+  background: rgb(232, 255, 250);
+  text-align: center;
+  width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.optionsMenu {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  font-size: 30px;
+  background: rgb(232, 255, 250);
+}
+
+/* B O A R D */
+
+.board {
+  cursor: crosshair;
+  position: relative;
+  pointer-events: auto;
+  background: rgb(232, 255, 250);
+  opacity: 0;
+  margin: auto;
+  width: 900px;
+  height: 900px;
+  padding: 20px;
+  font-size: 30px;
+}
+.boardResetBtn,
+.mainMenuBtn {
+  width: 20%;
+  max-width: 600px;
+  height: 35px;
+  font-size: 20px;
+  border: 0;
+}
+
+.readyWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+}
+
+.readyBtn {
+  cursor: crosshair;
+  background-color: rgba(59, 147, 141, 0.482);
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 0;
+  outline: 0;
+}
+.readyBtn span {
+  pointer-events: none;
+}
+.targetWrap {
+  position: absolute;
+  transform: rotate(90deg);
+  top: 0;
+  left: 0;
+  display: none;
+}
+.targetBtn {
+  background-color: red;
+  position: absolute;
+  top: 300px;
+  left: 0;
+  transform: translate(-50%, -50%);
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1;
+}
+
+/* B U T T O N S */
+
+.buttonSpacing {
+  padding: 2px;
+}
+.startBtn,
+.options button {
+  width: 20%;
+  max-width: 600px;
+  height: 35px;
+  font-size: 20px;
+  border: 0;
+}
+.startBtn:hover,
+.options button:hover,
+.boardResetBtn:hover,
+.optionsBackBtn:hover,
+.mainMenuBtn:hover {
+  transition: ease 1s;
+  background-color: rgb(105, 190, 255);
+}
+.startBtn:active,
+.startBtn:focus,
+.optionsBtn:active,
+.optionsBtn:focus,
+.optionsBackBtn:active,
+.optionsBtn:focus,
+.boardResetBtn:active,
+.mainMenuBtn:active {
+  transition: none;
+  background: rgb(107, 158, 195);
+  color: white;
+}
+.optionsBackBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20%;
+  max-width: 600px;
+  height: 35px;
+  font-size: 20px;
+  border: 0;
+}
+
+/* R E S U L T S */
+
+.result {
+  background: yellow;
+}
+
+/* K E Y F R A M E S */
+
+.show {
+  animation: fadein forwards 1s;
+  pointer-events: all;
+}
+@keyframes fadein {
+  0% {
+    opacity: 1;
+    display: none;
+  }
+  1% {
+    opacity: 0;
+    display: block;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.hide {
+  animation: fadeout forwards 1s;
+  pointer-events: auto;
+}
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+    display: block;
+  }
+  1% {
+    opacity: 15;
+    display: none;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
