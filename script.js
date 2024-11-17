@@ -90,7 +90,7 @@ function startGame() {
 
 // target
 const TARGET_RADIUS_MIN = 130;
-const TARGET_RADIUS_MAX = 500;
+const TARGET_RADIUS_MAX = 450;
 const TARGET_ROUNDS = 10;
 
 function randomizeTarget() {
