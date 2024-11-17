@@ -123,4 +123,5 @@ function resetGame() {
   readyReset();
 }
 
-startBtn.click();
+// DEBUG
+// startBtn.click();
