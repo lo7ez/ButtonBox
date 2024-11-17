@@ -2,6 +2,7 @@ const mainMenu = document.querySelector('.mainMenu');
 const optionsBtn = document.querySelector('.optionsBtn');
 const optionsBackBtn = document.querySelector('.optionsBackBtn');
 const optionsMenu = document.querySelector('.optionsMenu');
+const pageBoard = document.querySelector('.pageBoard');
 const board = document.querySelector('.board');
 const startBtn = document.querySelector('.startBtn');
 const boardResetBtn = document.querySelector('.boardResetBtn');
@@ -13,6 +14,8 @@ const readyBtn = document.querySelector('.readyBtn');
 const clock = document.querySelector('.clock');
 const startCount = document.querySelector('.startCount');
 
+const hiscoreEl = document.querySelector('.hiscore');
+
 optionsBtn.onclick = () => {
   optionsMenu.classList.toggle('show');
 };
@@ -21,12 +24,12 @@ optionsBackBtn.onclick = () => {
 };
 
 startBtn.onclick = () => {
-  mainMenu.classList.toggle('hide');
-  board.classList.toggle('show');
+  mainMenu.classList.toggle('show');
+  pageBoard.classList.toggle('show');
 };
 mainMenuBtn.onclick = () => {
-  mainMenu.classList.toggle('hide');
-  board.classList.toggle('show');
+  mainMenu.classList.toggle('show');
+  pageBoard.classList.toggle('show');
 };
 
 boardResetBtn.onclick = resetGame;
@@ -39,6 +42,7 @@ let readyTimer;
 let readyClock = READY_TIME;
 
 let hiscore = parseFloat(window.localStorage.getItem('hiscore')) || 0;
+hiscoreEl.innerHTML = hiscore;
 
 console.log('hiscore', hiscore);
 
@@ -120,6 +124,7 @@ function stopGame(finished) {
   if ((elapsedTime < hiscore || hiscore === 0) && finished) {
     hiscore = elapsedTime;
     window.localStorage.setItem('hiscore', elapsedTime);
+    hiscoreEl.innerHTML = hiscore;
     alert('New Hiscore!\n' + hiscore);
   }
 }
@@ -131,4 +136,4 @@ function resetGame() {
 }
 
 // DEBUG
-// startBtn.click();
+startBtn.click();

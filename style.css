@@ -19,14 +19,12 @@ body {
   left: 472px;
 }
 .mainMenu {
-  position: relative;
+  margin: auto 0;
   pointer-events: auto;
-  opacity: 1;
   background: rgb(232, 255, 250);
   text-align: center;
   width: 500px;
   padding: 20px;
-  margin: 0 auto;
   border-radius: 10px;
 }
 .optionsMenu {
@@ -45,23 +43,38 @@ body {
 
 /* B O A R D */
 
+.page {
+  opacity: 0;
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+.pageBoard .menuBar {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.hiscoreWrap {
+  float: right;
+  font-size: 2rem;
+}
+
 .board {
   cursor: crosshair;
-  position: relative;
   pointer-events: auto;
   background: rgb(232, 255, 250);
-  opacity: 0;
-  margin: auto;
   width: 1000px;
   height: 1000px;
   padding: 20px;
   font-size: 30px;
   border-radius: 2%;
+  margin: 0 auto;
 }
+
 .boardResetBtn,
 .mainMenuBtn {
   width: 20%;
-  max-width: 600px;
+
   height: 35px;
   font-size: 20px;
   border: 0;
@@ -165,18 +178,13 @@ body {
 
 .show {
   animation: fadein forwards 1s;
-  pointer-events: all;
+  display: block;
 }
 @keyframes fadein {
-  0% {
-    opacity: 1;
-    display: none;
-  }
-  1% {
+  from {
     opacity: 0;
-    display: block;
   }
-  100% {
+  to {
     opacity: 1;
   }
 }

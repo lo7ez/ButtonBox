@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div class="mainMenu">
+    <div class="page mainMenu show">
       <div class="title">buttonBox</div>
       <div class="credits">by rivas & lo7ez</div>
       <div class="help">
@@ -31,20 +31,28 @@
     </div>
 
     <!-- game board -->
-    <div class="board">
-      <div class="gameBoard">
-        <div class="readyWrap">
-          <button class="readyBtn">
-            <span>hover here</span><br />
-            <span class="startCount">3</span>
-          </button>
-          <div class="targetWrap">
-            <button class="targetBtn"></button>
+    <div class="page pageBoard">
+      <div class="menuBar">
+        <div class="hiscoreWrap">
+          hiscore:
+          <span class="hiscore">0</span>
+        </div>
+        <button class="mainMenuBtn">main menu</button>
+        <button class="boardResetBtn">reset</button>
+      </div>
+      <div class="board">
+        <div class="gameBoard">
+          <div class="readyWrap">
+            <button class="readyBtn">
+              <span>hover here</span><br />
+              <span class="startCount">3</span>
+            </button>
+            <div class="targetWrap">
+              <button class="targetBtn"></button>
+            </div>
           </div>
         </div>
       </div>
-      <button class="mainMenuBtn">main menu</button>
-      <button class="boardResetBtn">reset</button>
     </div>
 
     <!--result box-->
