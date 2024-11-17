@@ -84,8 +84,8 @@ function startGame() {
 }
 
 // target
-const TARGET_RADIUS_MIN = 150;
-const TARGET_RADIUS_MAX = 400;
+const TARGET_RADIUS_MIN = 130;
+const TARGET_RADIUS_MAX = 500;
 const TARGET_ROUNDS = 10;
 
 function randomizeTarget() {
@@ -93,8 +93,10 @@ function randomizeTarget() {
   const randomRadius = Math.round(
     Math.random() * (TARGET_RADIUS_MAX - TARGET_RADIUS_MIN) + TARGET_RADIUS_MIN,
   );
+
   targetWrap.style.transform = `rotate(${randomRotation}deg)`;
-  targetBtn.style.transform = `top(${randomRadius}px)`;
+  targetBtn.style.top = `${randomRadius}px`;
+  console.log('randomizedTarget', randomRadius, randomRotation);
 }
 
 targetBtn.addEventListener('click', () => {
