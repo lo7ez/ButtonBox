@@ -4,32 +4,43 @@
 }
 body {
   background: rgb(220, 220, 220);
-  padding-top: 50px;
+  padding-top: 30px;
+  cursor: crosshair;
 }
 .title {
   font-size: 30px;
   padding: 10px;
 }
 .credits {
+  font-style: italic;
+  font-size: 15px;
   padding-bottom: 20px;
 }
 .helpBtn {
   position: absolute;
-  top: 5px;
-  left: 472px;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  left: 10px;
+  border: 1;
+  border-radius: 5px;
+  display: block;
 }
 .mainMenu {
-  margin: auto 0;
   pointer-events: auto;
-  background: rgb(232, 255, 250);
   text-align: center;
   width: 500px;
-  padding: 20px;
+  font-size: 30px;
   border-radius: 10px;
+  padding: 10px;
+  padding: 50px;
+  background: rgb(232, 255, 250);
+
 }
 .optionsMenu {
-  position: absolute;
-  pointer-events: none;
+  pointer-events: auto;
+  display: none;
   opacity: 0;
   top: 0;
   left: 0;
@@ -41,6 +52,11 @@ body {
   border-radius: 10px;
 }
 
+.mainMenu button, .optionsMenu button {
+  border-radius: 10px;
+}
+
+
 /* B O A R D */
 
 .page {
@@ -50,8 +66,9 @@ body {
   width: 100%;
 }
 .pageBoard .menuBar {
-  width: 1000px;
+  width: 800px;
   margin: 0 auto;
+  padding: 5px;
 }
 
 .hiscoreWrap {
@@ -60,11 +77,10 @@ body {
 }
 
 .board {
-  cursor: crosshair;
   pointer-events: auto;
   background: rgb(232, 255, 250);
-  width: 1000px;
-  height: 1000px;
+  width: 800px;
+  height: 800px;
   padding: 20px;
   font-size: 30px;
   border-radius: 2%;
@@ -74,10 +90,11 @@ body {
 .boardResetBtn,
 .mainMenuBtn {
   width: 20%;
-
   height: 35px;
   font-size: 20px;
   border: 0;
+  border-radius: 10px;
+  cursor: crosshair;
 }
 
 .readyWrap {
@@ -89,19 +106,20 @@ body {
 }
 
 .readyBtn {
-  cursor: crosshair;
-  background-color: rgba(59, 147, 141, 0.482);
+  background-color: rgba(85, 213, 204, 0.482);
   transform: translate(-50%, -50%);
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 0;
   outline: 0;
+  cursor: crosshair;
 }
 .readyBtn span {
   pointer-events: none;
   font-family: monospace;
   font-size: 16px;
+  cursor: crosshair;
 }
 .targetWrap {
   position: absolute;
@@ -113,7 +131,6 @@ body {
 .targetBtn {
   background-color: red;
   position: absolute;
-  cursor: crosshair;
   top: 300px;
   left: 0;
   transform: translate(-50%, -50%);
@@ -122,6 +139,7 @@ body {
   height: 50px;
   border-radius: 50%;
   border: 1;
+  cursor: crosshair;
 }
 
 /* B U T T O N S */
@@ -136,14 +154,17 @@ body {
   height: 35px;
   font-size: 20px;
   border: 0;
+  cursor: crosshair;
 }
 .startBtn:hover,
 .options button:hover,
 .boardResetBtn:hover,
 .optionsBackBtn:hover,
-.mainMenuBtn:hover {
+.mainMenuBtn:hover,
+.darkModeBtn:hover {
   transition: ease 1s;
   background-color: rgb(105, 190, 255);
+  cursor: crosshair;
 }
 .startBtn:active,
 .startBtn:focus,
@@ -152,20 +173,28 @@ body {
 .optionsBackBtn:active,
 .optionsBtn:focus,
 .boardResetBtn:active,
-.mainMenuBtn:active {
+.mainMenuBtn:active,
+.darkModeBtn:active,
+.darkModeBtn:focus {
   transition: none;
   background: rgb(107, 158, 195);
   color: white;
+  cursor: crosshair;
 }
-.optionsBackBtn {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+
+/* O P T I O N S */
+
+.difficulty {
+  padding: 20px;
+}
+
+.darkModeBtn {
+  border: 0px;
+  height: 35px;
   width: 20%;
   max-width: 600px;
-  height: 35px;
   font-size: 20px;
-  border: 0;
+  cursor: crosshair;
 }
 
 /* R E S U L T S */
@@ -205,4 +234,37 @@ body {
     opacity: 0;
     display: none;
   }
+}
+
+
+
+/* D A R K M O D E */
+
+.dark-mode {
+  background: rgb(57, 57, 57);
+}
+
+.dark-modeMenu,
+.dark-modeMenu,
+.dark-modeMenu {
+  background: rgb(110, 121, 119);
+}
+
+.dark-mode #readyBtn {
+  background-color: rgba(100, 100, 100, 0.482);
+}
+
+/* Light mode styles */
+body {
+  background: rgb(220, 220, 220);
+}
+
+#mainMenu,
+#optionsMenu,
+#board {
+  background: rgb(232, 255, 250);
+}
+
+#readyBtn {
+  background-color: rgba(59, 147, 141, 0.482);
 }
