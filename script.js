@@ -2,6 +2,8 @@ const mainMenu = document.querySelector('.mainMenu');
 const optionsBtn = document.querySelector('.optionsBtn');
 const optionsBackBtn = document.querySelector('.optionsBackBtn');
 const optionsMenu = document.querySelector('.optionsMenu');
+const darkModeBtn = document.querySelector('.darkModeBtn');
+
 const pageBoard = document.querySelector('.pageBoard');
 const board = document.querySelector('.board');
 const startBtn = document.querySelector('.startBtn');
@@ -17,9 +19,7 @@ const startCount = document.querySelector('.startCount');
 const hiscoreEl = document.querySelector('.hiscore');
 
 optionsBtn.onclick = () => {
-  optionsMenu.classList.toggle('show');
-};
-optionsBackBtn.onclick = () => {
+  console.log('show');
   optionsMenu.classList.toggle('show');
 };
 
@@ -34,6 +34,52 @@ mainMenuBtn.onclick = () => {
 
 boardResetBtn.onclick = resetGame;
 
+document.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', function() {
+    this.blur();
+  });
+});
+
+// DARK MODE
+
+darkModeBtn.addEventListener('click', function() {
+  console.log('click');
+  document.body.classList.toggle('dark-mode');
+  mainMenu.classList.toggle('dark-modeMenu');
+  optionsMenu.classList.toggle('dark-modeMenu');
+  board.classList.toggle('dark-modeMenu');
+
+  if (document.body.classList.contains('dark-mode') &&
+      mainMenu.classList.contains('dark-modeMenu') &&
+      optionsMenu.classList.contains('dark-modeMenu') &&
+      board.classList.contains('dark-modeMenu')) {
+      localStorage.setItem('darkMode', 'enabled');
+      localStorage.setItem('darkModeMenu', 'enabled');
+  } else {
+      localStorage.setItem('darkMode', 'disabled');
+      localStorage.setItem('darkModeMenu', 'disabled');
+  }
+});
+
+function setInitialState() {
+  const darkMode = localStorage.getItem('darkMode');
+  const darkModeMenu = localStorage.getItem('darkModeMenu');
+
+  if (darkMode === 'enabled' && darkModeMenu === 'enabled') {
+      document.body.classList.add('dark-mode');
+      mainMenu.classList.add('dark-modeMenu');
+      optionsMenu.classList.add('dark-modeMenu');
+      board.classList.add('dark-modeMenu');
+  } else {
+      document.body.classList.remove('dark-mode');
+      mainMenu.classList.remove('dark-modeMenu');
+      optionsMenu.classList.remove('dark-modeMenu');
+      board.classList.remove('dark-modeMenu');
+  };
+};
+
+document.addEventListener('DOMContentLoaded', setInitialState);
+
 // timers
 const READY_TIME = 3;
 let timer;
@@ -43,7 +89,6 @@ let readyClock = READY_TIME;
 
 let hiscore = parseFloat(window.localStorage.getItem('hiscore')) || 0;
 hiscoreEl.innerHTML = hiscore;
-
 console.log('hiscore', hiscore);
 
 readyBtn.addEventListener('mouseover', (e) => {
@@ -60,6 +105,7 @@ readyBtn.addEventListener('mouseover', (e) => {
     }
   }, 1000);
 });
+
 readyBtn.addEventListener('mouseout', () => {
   console.log('mouseout', readyTimer);
   readyReset();
@@ -94,7 +140,7 @@ function startGame() {
 
 // target
 const TARGET_RADIUS_MIN = 130;
-const TARGET_RADIUS_MAX = 450;
+const TARGET_RADIUS_MAX = 400;
 const TARGET_ROUNDS = 10;
 
 function randomizeTarget() {
@@ -109,6 +155,7 @@ function randomizeTarget() {
 }
 
 targetBtn.addEventListener('click', () => {
+  console.log('targetBtn');
   roundCount--;
   if (roundCount === 0) {
     stopGame(true);
@@ -136,4 +183,4 @@ function resetGame() {
 }
 
 // DEBUG
-startBtn.click();
+//startBtn.click();
